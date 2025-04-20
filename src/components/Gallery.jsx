@@ -12,7 +12,7 @@ const Gallery = ({ tours, setTours, onRemove }) => {
 // Function to fetch tours from API
     const fetchTours = async () => {
         try {
-            const res = await fetch('https://api.allorigins.win/raw?url=https://course-api.com/react-tours-project');
+            const res = await fetch("https://api.allorigins.win/raw?url=https://course-api.com/react-tours-project");
             const data = await res.json();
             setTours(data);
             setLoading(false);
@@ -47,6 +47,14 @@ if (tours.length === 0) {
     );
 }
 
+// Extract unique destinations from tours
+const destinations = ["All Destinations", ...new Set(tours.map(tour => tour.destination))];
+
+// Filter tours based on the selected filter
+const filteredTours = filter === "All Destinations" 
+    ? tours 
+    : tours.filter(tour => tour.destination === filter);
+
     return (
         <div>
             {/* Use the DestinationSelector component */}
@@ -59,7 +67,7 @@ if (tours.length === 0) {
             {/* Render filtered tours */}
             <div className="tour-list">
                 {filteredTours.map((tour) => (
-                    <TourCard key={tour.id} tour={tour} onRemove={onRemove} />
+                    <TourCard key={tour.id} {...tour} onRemove={onRemove} />
                 ))}
             </div>
         </div>

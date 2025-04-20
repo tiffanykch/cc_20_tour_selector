@@ -37,6 +37,16 @@ if (error) {
     return <h2>Oh no! Error fetching tours.</h2>;
 }
 
+// Render when no tours are available
+if (tours.length === 0) {
+    return (
+        <section className="gallery">
+            <h2>No tours left. Refresh to reload.</h2>
+            <button onClick={fetchTours}>Refresh</button>
+        </section>
+    );
+}
+
     return (
         <div>
             {/* Use the DestinationSelector component */}

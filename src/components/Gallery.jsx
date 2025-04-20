@@ -33,9 +33,9 @@ if (loading) {
 }
 
 // Render error state
-    if (error) {
-        return <h2>Oh no! Error fetching tours.</h2>;
-    }
+if (error) {
+    return <h2>Oh no! Error fetching tours.</h2>;
+}
 
     return (
         <div>

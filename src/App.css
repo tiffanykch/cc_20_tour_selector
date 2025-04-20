@@ -1,42 +1,140 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+main {
+  background-color: rgb(94, 122, 80);
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+h1 {
+  font-size: 2.5rem;
+  color: rgb(209, 229, 199);
+  margin-bottom: 1rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+body {
+  font-family: 'Poppins', sans-serif;
+}  
+
+/* Container for the whole tour section */
+.gallery {
+  background-color: rgba(209, 229, 199, 0.607);
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.gallery h2 {
+  font-size: 2rem;
+  color: black;
+  margin-bottom: 1rem;
+}
+
+/* Grid layout for tour cards: 2 cards per row by default */
+.tour-list {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(2, 1fr); /* 🆕 Two cards per row */
+}
+
+/* Individual tour card */
+.tour-card {
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+.tour-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Tour image */
+.tour-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Tour content */
+.tour-card h3 {
+  font-size: 1.25rem;
+  margin: 1rem;
+  color: black
+}
+
+.tour-card h4 {
+  margin: 0 1rem;
+  color: black;
+}
+
+.tour-card p {
+  margin: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Buttons */
+.tour-card button {
+  background-color: #5ab452;
+  color: white;
+  border: none;
+  margin: 0.5rem 1rem 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.tour-card button:hover {
+  background-color: #52a34b;
+}
+
+/* Style for the filter dropdown */
+select {
+  background-color: rgb(209, 229, 199); /* Match the "Tour Comparison" heading color */
+  color: rgb(94, 122, 80); /* Match the background color for text */
+  border: none; /* Remove default border */
+  padding: 0.5rem 1rem; /* Add padding for a button-like appearance */
+  border-radius: 6px; /* Rounded corners to match buttons */
+  font-size: 1rem; /* Adjust font size */
+  cursor: pointer; /* Pointer cursor for interactivity */
+  transition: background-color 0.2s ease; /* Smooth hover effect */
+  margin-bottom: 1rem; /* Add spacing below the dropdown */
+}
+
+/* Hover effect for the dropdown */
+select:hover {
+  background-color: rgba(209, 229, 199, 0.8); /* Slightly lighter green on hover */
+}
+
+/* Optional: Adjust dropdown arrow */
+select::-ms-expand {
+  display: none; /* Remove default dropdown arrow in IE/Edge */
+}
+
+select:focus {
+  outline: none; /* Remove focus outline */
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2); /* Add subtle focus shadow */
+}
+
+/* Responsive: 1 column on small screens */
+@media (max-width: 768px) {
+  .tour-list {
+    grid-template-columns: 1fr; /* Stack cards on mobile */
   }
-  to {
-    transform: rotate(360deg);
+
+  .tour-card h3 {
+    font-size: 1.1rem;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .tour-card p {
+    font-size: 0.9rem;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }

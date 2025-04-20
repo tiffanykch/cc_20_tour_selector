@@ -56,21 +56,19 @@ const filteredTours = filter === "All Destinations"
     : tours.filter(tour => tour.name === filter);
 
     return (
-        <div>
-            {/* Use the DestinationSelector component */}
+        <section className="gallery">
+            {/* Content inside the gallery */}
             <DestinationSelector
                 destinations={destinations}
                 filter={filter}
                 setFilter={setFilter}
             />
-
-            {/* Render filtered tours */}
             <div className="tour-list">
                 {filteredTours.map((tour) => (
                     <TourCard key={tour.id} {...tour} onRemove={onRemove} />
                 ))}
             </div>
-        </div>
+        </section>
     );
 };
 

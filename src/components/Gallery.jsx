@@ -48,12 +48,12 @@ if (tours.length === 0) {
 }
 
 // Extract unique destinations from tours
-const destinations = ["All Destinations", ...new Set(tours.map(tour => tour.destination))];
+const destinations = ["All Destinations", ...new Set(tours.map(tour => tour.name))];
 
 // Filter tours based on the selected filter
 const filteredTours = filter === "All Destinations" 
     ? tours 
-    : tours.filter(tour => tour.destination === filter);
+    : tours.filter(tour => tour.name === filter);
 
     return (
         <div>

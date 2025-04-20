@@ -14,8 +14,10 @@ h1 {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-}  
+  background-color: rgb(94, 122, 80); 
+  font-family: 'Poppins', sans-serif; 
+  min-height: 100vh; 
+}
 
 /* Container for the whole tour section */
 .gallery {

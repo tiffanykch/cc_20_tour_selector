@@ -1,13 +1,15 @@
-import React, {use, useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import TourCard from "./TourCard";
+import DestinationSelector from "./DestinationSelector";
 
 // Gallery is resposible for fetching tours and rendering tour list
 const Gallery = ({ tours, setTours, onRemove }) => {
-    // Local state to manage loading and errors
+// Local state to manage loading and errors
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
+    const [filter, setFilter] = useState("All Destinations");
 
-    // Function to fetch tours from API
+// Function to fetch tours from API
     const fetchTours = async () => {
         try {
             const res = await fetch('https://api.allorigins.win/raw?url=https://course-api.com/react-tours-project');
@@ -20,20 +22,38 @@ const Gallery = ({ tours, setTours, onRemove }) => {
         }
     };
 
-    // Run fetchTours once after component mounts
+// Run fetchTours once after component mounts
     useEffect(() => {
         fetchTours();
     }, []);
 
-    // Render loading state
-    if (loading) {
-        return <h2>Loading...</h2>;
-    };
-
-    // Render error state
-    if (error) {
-        return <h2>Oh no! Error fetching tours.</h2>
-    }
+// Render loading state
+if (loading) {
+    return <h2>Loading...</h2>;
 }
+
+// Render error state
+    if (error) {
+        return <h2>Oh no! Error fetching tours.</h2>;
+    }
+
+    return (
+        <div>
+            {/* Use the DestinationSelector component */}
+            <DestinationSelector
+                destinations={destinations}
+                filter={filter}
+                setFilter={setFilter}
+            />
+
+            {/* Render filtered tours */}
+            <div className="tour-list">
+                {filteredTours.map((tour) => (
+                    <TourCard key={tour.id} tour={tour} onRemove={onRemove} />
+                ))}
+            </div>
+        </div>
+    );
+};
 
 export default Gallery;
